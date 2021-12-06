@@ -7,13 +7,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.rsschool.android2021.ui.first.FirstFragment;
+import com.rsschool.android2021.ui.second.SecondFragment;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity implements ActionPerformedListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         openFirstFragment(0);
     }
 
@@ -22,12 +27,10 @@ public class MainActivity extends AppCompatActivity implements ActionPerformedLi
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, firstFragment);
         transaction.commit();
-        // Здесь нехватало лишь добавить коммит
     }
 
-    private void openSecondFragment(int min, int max) {
-        // Здесь добавил FragmentTransaction, добавил в него второй врагмент и закоммитил
-        final Fragment secondFragment = SecondFragment.newInstance(min, max);
+    private void openSecondFragment(int result) {
+        final Fragment secondFragment = SecondFragment.newInstance(result);
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, secondFragment);
         transaction.commit();
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ActionPerformedLi
     }
 
     @Override
-    public void onActionPerformedTwo(int min, int max) {
-        openSecondFragment(min, max);
+    public void onActionPerformedTwo(int result) {
+        openSecondFragment(result);
     }
 }
