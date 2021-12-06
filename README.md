@@ -20,4 +20,5 @@ Rework project. Migrate to architectures components
 
 Use:
 dataBinding, LiveData, UseCase, Hilt
-https://github.com/aleh-god/rsschool2021-Android-task-randomizer/blob/master/Task%20randomizer.gif
+
+<img alt="fragment 2" src="https://github.com/aleh-god/rsschool2021-Android-task-randomizer/blob/master/Task%20randomizer.gif" width="250" height="500" />
