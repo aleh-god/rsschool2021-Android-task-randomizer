@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.rsschool.android2021.ActionPerformedListener
-import com.rsschool.android2021.R
+import com.rsschool.android2021.*
 import com.rsschool.android2021.databinding.FragmentFirstBinding
 import com.rsschool.android2021.domain.model.ResultModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,15 +47,15 @@ class FirstFragment : Fragment() {
             when (it) {
                 is ResultModel.Failure<Int> -> {
                     when (it.message) {
-                        "Min value is not correct Int or Null" -> {
-                            binding.minValue.error = "Min value is not correct Int or Null"
+                         MIN_ERROR_TEXT -> {
+                            binding.minValue.error = getString(R.string.minErrorText)
                         }
-                        "Max value is not correct Int or Null" -> {
-                            binding.maxValue.error = "Max value is not correct Int or Null"
+                         MAX_ERROR_TEXT -> {
+                            binding.maxValue.error = getString(R.string.maxErrorText)
                         }
-                        "Min value > or = Max value" -> {
-                            binding.maxValue.error = "Min value > or = Max value"
-                            binding.minValue.error = "Min value > or = Max value"
+                         DOUBLE_ERROR_TEXT -> {
+                            binding.maxValue.error = getString(R.string.doubleErrorText)
+                            binding.minValue.error = getString(R.string.doubleErrorText)
                         }
                     }
                 }
@@ -67,7 +66,6 @@ class FirstFragment : Fragment() {
                     binding.generate.setOnClickListener {
                         listener?.onActionPerformedTwo(result)
                     }
-
                 }
             }
         }

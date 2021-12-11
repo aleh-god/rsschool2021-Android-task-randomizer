@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rsschool.android2021.MAX_ERROR_TEXT
+import com.rsschool.android2021.MIN_ERROR_TEXT
 import com.rsschool.android2021.domain.model.RandomNumberModel
 import com.rsschool.android2021.domain.model.ResultModel
 import com.rsschool.android2021.domain.usecase.GetRandomNumberUseCase
@@ -39,13 +41,13 @@ class FirstViewModel @Inject constructor(
 
     private fun checkMin(): ResultModel<Int> {
         val result = minValueString.value?.toIntOrNull()
-        return if (result == null || result < 0) ResultModel.Failure("Min value is not correct Int or Null")
+        return if (result == null || result < 0) ResultModel.Failure(MIN_ERROR_TEXT)
         else ResultModel.Success(result)
     }
 
     private fun checkMax(): ResultModel<Int> {
         val result = maxValueString.value?.toIntOrNull()
-        return if (result == null || result < 1) ResultModel.Failure("Max value is not correct Int or Null")
+        return if (result == null || result < 1) ResultModel.Failure(MAX_ERROR_TEXT)
         else ResultModel.Success(result)
     }
 
